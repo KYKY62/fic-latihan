@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:example/state_util.dart';
 import '../view/ltsm_rotate_animation_view.dart';
 
-class LtsmRotateAnimationController extends State<LtsmRotateAnimationView> implements MvcController {
+class LtsmRotateAnimationController extends State<LtsmRotateAnimationView>
+    implements MvcController {
   static late LtsmRotateAnimationController instance;
   late LtsmRotateAnimationView view;
+  bool animate = false;
 
   @override
   void initState() {

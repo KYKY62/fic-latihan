@@ -28,8 +28,8 @@ class LtfmSlidingFormView extends StatefulWidget {
                 child: Container(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         "Apply Leave",
                         style: TextStyle(
                           fontSize: 14.0,
@@ -38,12 +38,39 @@ class LtfmSlidingFormView extends StatefulWidget {
                       ),
                       //! 1. buat datepicker, atur label-nya menjadi
                       //? "Leave Date"
+                      QDatePicker(
+                        label: "Leave Date",
+                        onChanged: (p0) {},
+                      ),
 
                       //! 2. Buat textarea, atur label-nya menjadi
                       //? "Reason"
-
+                      Card(
+                        color: Colors.grey,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                "Reason",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              TextField(
+                                maxLines: 8, //or null
+                                decoration: InputDecoration.collapsed(
+                                  hintText: "Enter your text here",
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       //! 3. Tambahkan Divider
-
+                      const Divider(),
                       //! 4. Buat sebuah tombol:
                       //? width: MediaQuery.of(context).size.width,
                       //? height: 40
@@ -53,7 +80,13 @@ class LtfmSlidingFormView extends StatefulWidget {
                         controller.submitted = !controller.submitted;
                         controller.update();
                       */
-
+                      ElevatedButton(
+                        onPressed: () {
+                          controller.submitted = !controller.submitted;
+                          controller.update();
+                        },
+                        child: const Text("Apply"),
+                      ),
                       //! 6. Jika Container mengecil ketika tombol di klik
                       //? maka task ini selesai!
                     ],

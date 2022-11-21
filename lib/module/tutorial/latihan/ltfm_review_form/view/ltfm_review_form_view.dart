@@ -29,12 +29,56 @@ class LtfmReviewFormView extends StatefulWidget {
                         child: SizedBox(
                           width: MediaQuery.of(context).size.width,
                           child: ListBody(
-                            children: const <Widget>[
+                            children: <Widget>[
                               //! 6. Pindahkan textarea review, ratingbar, dan tombol review
                               //!    yang berada di bawah ke dalam sini (di dalam children)
                               //! 7. Test fitur ini dengan klik tombol Rate di pojok kanan atas
                               //! 8. Jika popup tertutup setelah tombol review di klik,
                               //!    Tasks ini selesai
+                              Card(
+                                color: Colors.grey,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: const [
+                                      Text(
+                                        "Review",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      TextField(
+                                        maxLines: 8, //or null
+                                        decoration: InputDecoration.collapsed(
+                                          hintText: "Enter your text here",
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              RatingBar.builder(
+                                initialRating: 2.0,
+                                minRating: 1,
+                                direction: Axis.horizontal,
+                                allowHalfRating: true,
+                                itemCount: 5,
+                                itemSize: 28.0,
+                                itemBuilder: (context, _) => const Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                ),
+                                onRatingUpdate: (rating) {},
+                              ),
+                              const SizedBox(height: 30),
+                              ElevatedButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: const Text("Review"),
+                              )
                             ],
                           ),
                         ),
@@ -51,7 +95,7 @@ class LtfmReviewFormView extends StatefulWidget {
         child: Container(
           padding: const EdgeInsets.all(10.0),
           child: Column(
-            children: const [
+            children: [
               //! 1. Buat sebuah textarea "Review"
               //! 2. Tambahkan ratingbar setelah textarea review, gunakan kode ini:
               /*
@@ -75,6 +119,49 @@ class LtfmReviewFormView extends StatefulWidget {
               /*
               Navigator.pop(context);
               */
+              Card(
+                color: Colors.grey,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        "Review",
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      TextField(
+                        maxLines: 8, //or null
+                        decoration: InputDecoration.collapsed(
+                          hintText: "Enter your text here",
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              RatingBar.builder(
+                initialRating: 2.0,
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemSize: 28.0,
+                itemBuilder: (context, _) => const Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                ),
+                onRatingUpdate: (rating) {},
+              ),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text("Review"),
+              )
             ],
           ),
         ),

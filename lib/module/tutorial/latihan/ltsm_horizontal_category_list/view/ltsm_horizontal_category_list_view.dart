@@ -29,11 +29,18 @@ class LtsmHorizontalCategoryListView extends StatefulWidget {
                     //TODO: Atur selectedIndex = index did alam event onTap()
                     //! Panggil controller.setState((){}); setelah-nya
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        controller.setState(() {
+                          controller.selectedIndex = index;
+                        });
+                      },
                       child: Card(
                         //TODO: Atur warna card, jika selectedIndex == index,
                         //! Maka warnanya orange,
                         //! Jika tidak, warnanya grey
+                        color: controller.selectedIndex == index
+                            ? Colors.orange
+                            : Colors.grey,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
@@ -81,9 +88,15 @@ class LtsmHorizontalCategoryListView extends StatefulWidget {
                           ),
                         ),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueGrey,
+                          backgroundColor: controller.selectedIndex == index
+                              ? Colors.orange
+                              : Colors.blueGrey,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          controller.setState(() {
+                            controller.selectedIndex = index;
+                          });
+                        },
                       ),
                     );
                   },

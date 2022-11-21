@@ -24,7 +24,7 @@ class LtsmRotateAnimationView extends StatefulWidget {
                 //TODO:
                 //jika animate == true, atur derajat rotasinya menjadi 90
                 //jika animate == false, atur opacity menjadi 0
-                turns: 15 / 360,
+                turns: controller.animate ? 90 / 360 : 0,
                 duration: const Duration(milliseconds: 2000),
                 child: Container(
                   height: 100.0,
@@ -53,7 +53,11 @@ class LtsmRotateAnimationView extends StatefulWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueGrey,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  controller.setState(() {
+                    controller.animate = !controller.animate;
+                  });
+                },
               ),
             ],
           ),

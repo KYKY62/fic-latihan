@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:example/state_util.dart';
 import '../view/ltsm_vertical_category_list_view.dart';
 
-class LtsmVerticalCategoryListController extends State<LtsmVerticalCategoryListView> implements MvcController {
+class LtsmVerticalCategoryListController
+    extends State<LtsmVerticalCategoryListView> implements MvcController {
   static late LtsmVerticalCategoryListController instance;
   late LtsmVerticalCategoryListView view;
+  int selectedIndex = 0;
 
   @override
   void initState() {

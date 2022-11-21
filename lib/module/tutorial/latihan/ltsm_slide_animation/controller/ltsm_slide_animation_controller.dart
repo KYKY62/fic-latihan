@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:example/state_util.dart';
 import '../view/ltsm_slide_animation_view.dart';
 
-class LtsmSlideAnimationController extends State<LtsmSlideAnimationView> implements MvcController {
+class LtsmSlideAnimationController extends State<LtsmSlideAnimationView>
+    implements MvcController {
   static late LtsmSlideAnimationController instance;
   late LtsmSlideAnimationView view;
+  bool animate = false;
 
   @override
   void initState() {

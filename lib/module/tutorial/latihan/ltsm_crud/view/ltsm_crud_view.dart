@@ -30,6 +30,9 @@ class LtsmCrudView extends StatefulWidget {
             "description":
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
           };
+          controller.setState(() {
+            controller.products.add(newProduct);
+          });
         },
       ),
       body: Container(
@@ -47,7 +50,11 @@ class LtsmCrudView extends StatefulWidget {
                   //panggil kode itu di dalam event onTap()
                   // jgn lupa panggil setState setelah-nya
                   return InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      controller.setState(() {
+                        controller.products.removeAt(index);
+                      });
+                    },
                     child: Card(
                       child: ListTile(
                         leading: CircleAvatar(
@@ -64,6 +71,9 @@ class LtsmCrudView extends StatefulWidget {
                             //gunakan kode ini:
                             // item["price"] = 44;
                             // jgn lupa panggil setState setelah-nya
+                            controller.setState(() {
+                              item["price"] = 44;
+                            });
                           },
                           icon: const Icon(
                             Icons.edit,
